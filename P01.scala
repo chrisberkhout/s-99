@@ -8,15 +8,15 @@ object P01 {
   def last[A](l: List[A]): A = l.last
 
   def recursiveLast[A](l: List[A]): A = l match {
-    case Nil => throw new java.util.NoSuchElementException()
     case h :: Nil => h
-    case h :: t => recursiveLast(t)
+    case _ :: t => recursiveLast(t)
+    case _ => throw new NoSuchElementException
   }
 
   def betterRecursiveLast[A](l: List[A]): Option[A] = l match {
-    case Nil => None
     case h :: Nil => Some(h)
-    case h :: t => betterRecursiveLast(t)
+    case _ :: t => betterRecursiveLast(t)
+    case _ => None
   }
 
 }
